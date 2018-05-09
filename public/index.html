@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sub').click(function () {
+                var donnees = {
+                    nomP: $('#nomP').val(),
+                    prenomP: $('#prenomP').val(),
+                    mailP: $('#mailP').val(),
+                    telP: $('#telP').val(),
+                    typeP: $('#typeP').val(),
+                    mdpP: $('#mdpP').val(),
+                    refP: $('#refP').val(),
+                };
+                $.ajax({
+                    url: "/participants",
+                    type: "POST",
+                    contentType: "application/json",
+                    processData: false,
+                    data: JSON.stringify(donnees),
+                    complete: function (data) {
+                        $('#output').html(data.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+  </head>
+  <body>
+    <h3>Enter a username to enter into the database:</h3>
+    <input id="nomP" type="text" />
+    <input id="prenomP" type="text" />
+    <input id="mailP" type="text" />
+    <input id="telP" type="text" />
+    <input id="typeP" type="text" />
+    <input id="mdpP" type="text" />
+    <input id="refP" type="text" />
+    <input id="sub" type="submit" />
+    <p id="output"></p>
+  </body>
+</html>
