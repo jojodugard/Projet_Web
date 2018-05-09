@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 mai 2018, 12:41:19
+    Author     : adminhy
+*/
+
+body{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.titreBlanc{
+    text-align: center;
+    color:white;
+}
+
+
+.center{
+    text-align: center;
+}
+
+.droite{
+    text-align: right;
+    display: inline-block;
+}
+
+.gauche{
+    text-align: left;
+    display: inline-block;
+}
+
+.milieu{
+    text-align: center;
+    display: inline-block;
+}
+
+.connexion{
+    text-align: right;
+    font-size: 15px;
+    margin-right: 1%;
+    color: white;
+
+}
+
+.gris{
+    background-color: grey;
+    margin: 5px;
+}
+
+.searchButton{
+    background-image: url(images/loupe.png);
+    width: 35px;
+    height: 35px;
+    padding: 0; 
+}
+
+.evenement{
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+    
+}
