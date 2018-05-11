@@ -8,16 +8,22 @@ and open the template in the editor.
     Author     : adminhy
 */
 
+form{
+    margin: 2%;
+}
 body{
-    margin-left: 5%;
-    margin-right: 5%;
+
+    background-color: grey;
+    margin: 5%;
 }
 .titreBlanc{
     text-align: center;
     color:white;
 }
 
-
+label{
+    color:white;
+}
 .center{
     text-align: center;
 }
@@ -51,7 +57,6 @@ body{
 }
 
 .searchButton{
-    background-image: url(images/loupe.png);
     width: 35px;
     height: 35px;
     padding: 0; 
@@ -63,5 +68,5 @@ body{
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 2%;
-    
+
 }

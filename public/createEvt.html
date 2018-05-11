@@ -15,9 +15,37 @@ and open the template in the editor.
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <h1 class="center"> Création d'un évènement</h1>
-        <form>
+    <header> 
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="accueilAdmin.html">Accueil</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Evènements
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Liste des évènements</a>
+                                <a class="dropdown-item" href="#">Créer un évènement</a>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+    <body class="gris">
+        
+        <p class="connexion">Connecté en tant qu'admin</p>
+
+        <h1 class="titreBlanc"> Création d'un évènement</h1>
+        <form action="accueilAdmin.html" style="margin:2%;">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Acronyme</label>
                 <input type="text" class="form-control">
@@ -25,6 +53,11 @@ and open the template in the editor.
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nom de l'évènement</label>
                 <input type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Date de l'évènement</label>
+                <input type="date" name="dateEvt">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Lieu de l'évènement</label>
@@ -50,47 +83,47 @@ and open the template in the editor.
             </div>
 
             <div>
-                <input type="radio" id="typeParticipant"
+                <input type="checkbox" id="typeParticipant"
                        name="contact">
                 <label for="typeParticipant">Etudiant</label>
                 <input type="number" name="numeric" id="numeric" value="0">
 
                 <br>
 
-                <input type="radio" id="typeParticipant"
+                <input type="checkbox" id="typeParticipant"
                        name="contact">
                 <label for="typeParticipant">Diplômé</label>
                 <input type="number" name="numeric" id="numeric" value="0">
 
                 <br>
 
-                <input type="radio" id="typeParticipant"
+                <input type="checkbox" id="typeParticipant"
                        name="contact">
                 <label for="typeParticipant">Professionel</label>
                 <input type="number" name="numeric" id="numeric" value="0">
 
                 <br>
 
-                <input type="radio" id="typeParticipant"
+                <input type="checkbox" id="typeParticipant"
                        name="contact">
                 <label for="typeParticipant">Administratif</label>
                 <input type="number" name="numeric" id="numeric" value="0">
 
                 <br>
 
-                <input type="radio" id="typeParticipant"
+                <input type="checkbox" id="typeParticipant"
                        name="contact">
                 <label for="typeParticipant">Enseignant</label>
                 <input type="number" name="numeric" id="numeric" value="0">
 
                 <br>
 
-                <input type="radio" id="typeParticipant"
+                <input type="checkbox" id="typeParticipant"
                        name="contact">
                 <label for="typeParticipant">Accompagnant</label>
                 <input type="number" name="numeric" id="numeric" value="0">
             </div>
-            
+
             <div>
                 <button type="submit" class="btn btn-secondary">Enregistrer</button>
             </div>
@@ -98,3 +131,4 @@ and open the template in the editor.
         </form>
     </body>
 </html>
+
