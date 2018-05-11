@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : adminhy
 */
 
+a{
+   margin-left: 2%; 
+}
+p{
+   margin-left: 2%; 
+}
 form{
     margin: 2%;
 }

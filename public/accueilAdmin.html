@@ -15,36 +15,38 @@ and open the template in the editor.
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css">
     </head>
+    <header> 
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Accueil</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Evènements
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Liste des évènements</a>
+                            <a class="dropdown-item" href="createEvt.html"> Créer un évènement</a>
+                        </div>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+                </form>
+            </div>
+        </nav>
+
+
+    </header>
     <body class="gris">
-        <header> 
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Accueil</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Evènements
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Liste des évènements</a>
-                                <a class="dropdown-item" href="createEvt.html"> Créer un évènement</a>
-                            </div>
-                        </li>
-
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
-                    </form>
-                </div>
-            </nav>
-
-        </header>
         <p class="connexion">Connecté en tant qu'admin</p>
         <h1 class='titreBlanc'>Liste des évènements</h1>
 
@@ -59,7 +61,7 @@ and open the template in the editor.
 
             <p> Nombre de participants: XX</p>
             <p> Statistiques</p>
-            <p> Voir les participants</p>
+            <a href="listePart.html"> Participants </a>
         </div>
 
         <div class="evenement">
@@ -67,7 +69,7 @@ and open the template in the editor.
 
             <p> Nombre de participants: XX</p>
             <p> Statistiques</p>
-            <p> Voir les participants</p>
+            <a href="listePart.html"> Participants </a>
         </div>
 
         <div class="evenement">
@@ -75,7 +77,7 @@ and open the template in the editor.
 
             <p> Nombre de participants: XX</p>
             <p> Statistiques</p>
-            <p> Voir les participants</p>
+            <a href="listePart.html"> Participants </a>
         </div>
     </body>
 </html>
