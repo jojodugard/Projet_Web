@@ -9,10 +9,10 @@ and open the template in the editor.
 */
 
 a{
-   margin-left: 2%; 
+    margin-left: 2%; 
 }
 p{
-   margin-left: 2%; 
+    margin-left: 2%; 
 }
 form{
     margin: 2%;
@@ -69,10 +69,39 @@ label{
 }
 
 .evenement{
-    background-color: white;
+    background-color: #f8f9fa ;
     border-radius: 5px;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 2%;
 
+}
+
+.search{
+    border-color: #ced4da;
+    background-color: grey;
+    color: white;
+}
+
+.nbEvt{
+    margin: 1%;
+    margin-left: 10%;
+    color: white;
+    font-size: 25px;
+}
+
+.trash{
+    margin:1%;
+}
+
+.countPart{
+    font-size: 50px;
+    color: black;
+}
+
+
+.participant{
+   background-color: #f8f9fa;
+   margin-top: 3%;
+   
 }

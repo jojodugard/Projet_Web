@@ -17,7 +17,7 @@ and open the template in the editor.
     </head>
     <header> 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: blue;">
             <a class="navbar-brand" href="#">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,21 @@ and open the template in the editor.
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+                    <button class="btn btn-outline-secondary my-2 my-sm-0 search" type="submit">Recherche</button>
                 </form>
+
+
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Administrateur
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="">Gérer mon profil</a>
+                            <a class="dropdown-item" href="accueil.html">Se déconnecter</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
 
@@ -47,37 +60,91 @@ and open the template in the editor.
     </header>
     <body class="gris">
 
-        <p class="connexion">Connecté en tant qu'admin</p>
-        <h1 class='titreBlanc'>Liste des évènements</h1>
-
-        <div>Nombre d'évènements: 4</div>
+        <div class="nbEvt">Nombre d'évènements: 4</div>
 
         <!-- Création d'une div pour chacun des évènements -->
 
         <!-- Pour l'instant elles sont crées à la main pour la maquette -->
 
-        <div class="evenement">
-            <h2 class="center">Titre de l'évenement 1</h2>
+        <div class="media evenement">
+            <div class="media-body">
+                <h2 class="center"> - Forum AL3C 2019 - </h2>
+                <br>
 
-            <p> Nombre de participants: XX</p>
-            <p> Statistiques</p>
-            <a href="listePart.html"> Participants </a>
+                <div class="row">
+                    <div class="col droite">
+                        <p class="countPart"> 30/35</p>
+                    </div>
+                    <div class="col center">
+                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
+                    </div>
+                    <div class="col gauche">
+                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
+                    </div>
+                </div>
+            </div>
+            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
         </div>
 
-        <div class="evenement">
-            <h2 class="center">Titre de l'évenement 2</h2>
+        <div class="media evenement">
+            <div class="media-body">
+                <h2 class="center"> - Titre de l'évenement 2 - </h2>
+                <br>
 
-            <p> Nombre de participants: XX</p>
-            <p> Statistiques</p>
-            <a href="listePart.html"> Participants </a>
+                <div class="row">
+                    <div class="col droite">
+                        <p class="countPart" style="color:green;"> 25/25</p>
+                    </div>
+                    <div class="col center">
+                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
+                    </div>
+                    <div class="col gauche">
+                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
+                    </div>
+                </div>
+            </div>
+            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
+        </div>
+        
+        <div class="media evenement">
+            <div class="media-body">
+                <h2 class="center"> - Titre de l'évenement 3 - </h2>
+                <br>
+
+                <div class="row">
+                    <div class="col droite">
+                        <p class="countPart"> 30/35</p>
+                    </div>
+                    <div class="col center">
+                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
+                    </div>
+                    <div class="col gauche">
+                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
+                    </div>
+                </div>
+            </div>
+            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
+        </div>
+        
+        <div class="media evenement">
+            <div class="media-body">
+                <h2 class="center"> - Titre de l'évenement 4 - </h2>
+                <br>
+
+                <div class="row">
+                    <div class="col droite">
+                        <p class="countPart"> 30/35</p>
+                    </div>
+                    <div class="col center">
+                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
+                    </div>
+                    <div class="col gauche">
+                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
+                    </div>
+                </div>
+            </div>
+            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
         </div>
 
-        <div class="evenement">
-            <h2 class="center">Titre de l'évenement 3</h2>
-
-            <p> Nombre de participants: XX</p>
-            <p> Statistiques</p>
-            <a href="listePart.html"> Participants </a>
-        </div>
     </body>
 </html>
