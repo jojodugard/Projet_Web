@@ -32,6 +32,7 @@ label{
 }
 .center{
     text-align: center;
+    margin-top: 5px;
 }
 
 .droite{
@@ -77,6 +78,14 @@ label{
 
 }
 
+.evenement:hover{
+    background-color: #e6e6e7 ;
+    border-radius: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+
+}
 .search{
     border-color: #ced4da;
     background-color: grey;
@@ -101,7 +110,37 @@ label{
 
 
 .participant{
-   background-color: #f8f9fa;
-   margin-top: 3%;
-   
+    background-color: #f8f9fa;
+    margin-top: 3%;
+
+}
+
+.largeur {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+
+}
+
+.acc{
+    background-color: #e6e6e7 ;
+    border-radius: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+    border-style: dashed ;
+
+}
+
+.formulaire {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;    
+}
+
+
+.images{
+    height:70px;
+    width:70px; 
 }
