@@ -13,34 +13,28 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css"
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+    	<link rel="stylesheet" href="style.css" />
+    	<script src="CtrlConnect.js"></script>
     </head>
-    <body>
+    <body ng-app="Projet_Web">
         <div class="container">
             <h1>Bienvenue!</h1>
             <h2> Connexion: </h2>
 
 
-            <form action="accueilAdmin.html">
+            <form ng-controller="CtrlConnect">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Identifiant</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="adresse@mail.com">
-                    
+                    <label for="mail">Identifiant</label>
+                    <input type="email" class="form-control" id="mail" autofocus tabindex="1" aria-describedby="emailHelp" placeholder="adresse@mail.com" ng-model="mail" />  
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Mot de passe</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" class="form-control" id="mdp" tabindex="2" placeholder="Mot de passe" ng-model="mdp" />
                 </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-                </div>
-                <button type="submit" class="btn btn-secondary">Connexion admin</button>
-                
-                <a href="accueilParticipant.html" style="color:white;"> Continuer sans se connecter </a>
+                <input type="button" value="Connexion" class="btn btn-secondary" ng-click="connect()" />
             </form>
-
-
+            	<p ng-bind="erreur"></p>
         </div>
     </body>
 </html>

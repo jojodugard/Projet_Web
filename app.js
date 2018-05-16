@@ -19,6 +19,24 @@ app.use(express.static(__dirname + '/public'));
 app.use('/bower_components',
 express.static(__dirname + '/bower_components'));
 
+app.post('/isparticipants', function (req, res) {
+	if (req.body.mail === 'admin' && req.body.mdp === 'admin') {
+		res.send('admin');
+	}
+	else {
+		var sql = 'SELECT COUNT(*) as \'result\'FROM Participants WHERE mailP=\'' + req.body.mail + '\' AND mdpP=\'' + req.body.mdp +'\';'
+    	con.query(sql, function (err, result) {
+    	        if (err) throw err;
+				if (result[0].result === 1) {
+					res.send('normal');
+				}
+				else {
+					res.send('non');
+				}
+    	});
+    }
+});
+
 app.post('/participants', function (req, res) {
 	var sql = 'INSERT INTO Participants(nomP, prenomP, mailP, telP, typeP, mdpP) VALUES (\'' + req.body.nomP + '\', \'' + req.body.prenomP + '\', \'' + req.body.mailP 
     + '\', \'' + req.body.telP + '\', \'' + req.body.typeP + '\', \'' + req.body.mdpP + '\');'
