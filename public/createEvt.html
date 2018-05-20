@@ -13,8 +13,11 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+		<script src="CtrlCreateEvt.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
+    <body class="gris" ng-app="Projet_Web" ng-controller="CtrlCreateEvt">
     <header> 
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,7 +33,7 @@ and open the template in the editor.
                             Evènements
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Liste des évènements</a>
+                            <a class="dropdown-item" href="accueilAdmin.html">Liste des évènements</a>
                             <a class="dropdown-item" href="#">Créer un évènement</a>
                         </div>
                     </li>
@@ -52,93 +55,93 @@ and open the template in the editor.
         </nav>
 
     </header>
-    <body class="gris">
+    
         <h1 class="titreBlanc"> Création d'un évènement</h1>
         <div class="formulaire">
-            <form action="accueilAdmin.html" style="margin:2%;">
+            <form style="margin:2%;">
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Acronyme</label>
-                    <input type="text" class="form-control">
+                    <label for="acro">Acronyme</label>
+                    <input type="text" name="acro" id="acro" class="form-control" ng-model="evt.acro">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Nom de l'évènement</label>
-                    <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Date de l'évènement</label>
-                    <input type="date" name="dateEvt">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Lieu de l'évènement</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Description</label>
-                    <textarea name="comment"> </textarea>
+                    <label for="nameEvt">Nom de l'évènement</label>
+                    <input type="text" name="nameEvt" id="nameEvt" class="form-control" ng-model="evt.nameEvt">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Date d'ouverture des inscriptions</label>
-                    <input type="date" name="ouverture">
+                    <label for="dateEvt">Date de l'évènement</label>
+                    <input type="date" name="dateEvt" id="dateEvt" ng-model="evt.DateEvt">
+                </div>
+                <div class="form-group">
+                    <label for="lieuEvt">Lieu de l'évènement</label>
+                    <input type="text" class="form-control" name="lieuEvt" id="lieuEvt" ng-model="evt.lieuEvt">
+                </div>
+                <div class="form-group">
+                    <label for="DescEvt">Description</label>
+                    <textarea name="DescEvt" id="DescEvt" ng-model="evt.DescEvt"> </textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Date de clôture des inscriptions</label>
-                    <input type="date" name="cloture">
+                    <label for="DateOuv">Date d'ouverture des inscriptions</label>
+                    <input type="date" name="DateOuv" id="DateOuv" ng-model="evt.DateOuv" >
+                </div>
+
+                <div class="form-group">
+                    <label for="DateClo">Date de clôture des inscriptions</label>
+                    <input type="date" name="DateClo" id="DateClo" ng-model="evt.DateClo" >
                 </div>
                 <div class="form-group">
-                    <label for="numeric">Nombre maximal de participants</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <label for="nbMax">Nombre maximal de participants</label>
+                    <input type="number" name="nbMax" id="nbMax" value="0" ng-model="evt.nbMax">
                 </div>
 
                 <div>
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Etudiant</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="checkbox" id="isEtu"
+                           name="isEtu" ng-model="evt.isEtu">
+                    <label for="isEtu">Etudiant</label>
+                    <input type="number" name="nbEtu" id="nbEtu" value="0" ng-model="evt.nbEtu" ng-if="evt.isEtu === true && evt.isAcc === true">
 
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Diplômé</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="checkbox" id="isDip"
+                           name="isDip" ng-model="evt.isDip">
+                    <label for="isDip">Diplômé</label>
+                    <input type="number" name="nbDip" id="nbDip" value="0" ng-model="evt.nbDip" ng-if="evt.isDip === true && evt.isAcc === true">
 
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Professionel</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="checkbox" id="isPro"
+                           name="isPro" ng-model="evt.isPro">
+                    <label for="isPro">Professionel</label>
+                    <input type="number" name="nbPro" id="nbPro" value="0" ng-model="evt.nbPro" ng-if="evt.isPro === true && evt.isAcc === true">
 
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Administratif</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="checkbox" id="isAdmin"
+                           name="isAdmin" ng-model="evt.isAdmin">
+                    <label for="isAdmin">Administratif</label>
+                    <input type="number" name="nbAdmin" id="nbAdmin" value="0" ng-model="evt.nbAdmin" ng-if="evt.isAdmin === true && evt.isAcc === true">
 
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Enseignant</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="checkbox" id="isEns"
+                           name="isEns" ng-model="evt.isEns">
+                    <label for="isEns">Enseignant</label>
+                    <input type="number" name="nbEns" id="nbEns" value="0" ng-model="evt.nbEns" ng-if="evt.isEns === true && evt.isAcc === true">
 
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Accompagnant</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="checkbox" id="isAcc"
+                           name="isAcc" ng-model="evt.isAcc">
+                    <label for="isAcc">Accompagnant</label>
                 </div>
 
                 <div>
-                    <button type="submit" class="btn btn-secondary">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" ng-click="createEvt()" >Enregistrer</button>
                 </div>
 
             </form>
+            <p ng-bind="erreur"></p>
         </div>
     </body>
 </html>

@@ -48,13 +48,14 @@ app.post('/participants', function (req, res) {
 });
 
 app.post('/evenements', function (req, res) {
-    con.query('INSERT INTO Evenements(acroE, nomE, lieuE, descE, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk) VALUES (\'' 
-    + req.body.acroE + '\', \'' + req.body.nomE + '\', \'' + req.body.lieuE 
-    + '\', \'' + req.body.descE + '\', \'' + req.body.dateOE + '\', \'' + req.body.dateCE + '\', \'' + req.body.nbMaxPartE + '\', \'' + req.body.etuOk
-    + '\', \'' + req.body.dipOk + '\', \'' + req.body.proOk + '\', \'' + req.body.adminOk + '\', \'' + req.body.ensOk + '\', \'' + req.body.accOk  + '\');', 
+console.log(req.body);
+    con.query('INSERT INTO Evenements(acroE, nomE, lieuE, descE, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns) VALUES (\'' 
+    + req.body.acro + '\', \'' + req.body.nameEvt + '\', \'' + req.body.lieuEvt 
+    + '\', \'' + req.body.DescEvt + '\', \'' + req.body.DateOuv + '\', \'' + req.body.DateClo + '\', \'' + req.body.nbMax + '\', \'' + req.body.isEtu
+    + '\', \'' + req.body.isDip + '\', \'' + req.body.isPro + '\', \'' + req.body.isAdmin + '\', \'' + req.body.isEns + '\', \'' + req.body.isAcc  + '\', \'' + req.body.nbEtu + '\', \'' + req.body.nbDip + '\', \'' + req.body.nbPro + '\', \'' + req.body.nbAdmin + '\', \'' + req.body.nbEns + '\');', 
         function (err, result) {
             if (err) throw err;
-            res.send('Evènement créé avec succès !');
+            res.send('Succes');
         }
     );
 });
