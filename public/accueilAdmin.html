@@ -13,8 +13,11 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+		<script src="CtrlAdmin.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
+    <body class="gris" ng-app="Projet_Web" ng-controller="CtrlAdmin" >
     <header> 
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: blue;">
@@ -49,7 +52,7 @@ and open the template in the editor.
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="">Gérer mon profil</a>
-                            <a class="dropdown-item" href="accueil.html">Se déconnecter</a>
+                            <a class="dropdown-item" href="index.html">Se déconnecter</a>
                         </div>
                     </li>
                 </ul>
@@ -58,93 +61,39 @@ and open the template in the editor.
 
 
     </header>
-    <body class="gris">
+    
 
-        <div class="nbEvt">Nombre d'évènements: 4</div>
+        <div class="nbEvt">Nombre d'évènements: {{nbEvents}}</div>
 
         <!-- Création d'une div pour chacun des évènements -->
 
         <!-- Pour l'instant elles sont crées à la main pour la maquette -->
-
-        <div onclick="document.location='detailEvt.html'" class="media evenement">
-            <div class="media-body">
-                <h2 class="center"> - Forum AL3C 2019 - </h2>
-                <br>
-
-                <div class="row">
-                    <div class="col droite">
-                        <p class="countPart"> 30/35</p>
-                    </div>
-                    <div class="col center">
-                        <img class="ml-3 images" src="images/stat.png" alt="Trash">
-                    </div>
-                    <div class="col gauche">
-                        <a href="listePart.html">  <img class="ml-3 images" src="images/liste.png" alt="Trash"></a>
-                    </div>
-                </div>
-            </div>
-            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
-        </div>
-
-        <div class="media evenement">
-            <div class="media-body">
-                <h2 class="center"> - Titre de l'évenement 2 - </h2>
-                <br>
-
-                <div class="row">
-                    <div class="col droite">
-                        <p class="countPart" style="color:green;"> 25/25</p>
-                    </div>
-                    <div class="col center">
-                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
-                    </div>
-                    <div class="col gauche">
-                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
-                    </div>
-                </div>
-            </div>
-            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
+		<div ng-repeat="evt in events">
+        	<div class="media evenement">
+        		<a href="detailEvt.html?id={{evt.idE}}"> Détails </a>
+        	    <div class="media-body">
+        	        <h2 class="center"> - {{evt.acroE}} - </h2>
+        	        <br>
+	
+	                <div class="row">
+	                    <div class="col droite">
+	                        <p class="countPart"> {{evt.nbPart}}/{{evt.nbMaxPartE}}</p>
+    	                </div>
+    	                <div class="col center">
+        	                <img class="ml-3 images" src="images/stat.png" alt="Trash">
+            	        </div>
+                	    <div class="col gauche">
+                    	    <a href="listePart.html">  <img class="ml-3 images" src="images/liste.png" alt="Trash"></a>
+             	       </div>
+             	   </div>
+            	</div>
+            	<button ng-click="delete(evt)"><img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35"></button>
+        	</div>
+        	<br />
         </div>
         
-        <div class="media evenement">
-            <div class="media-body">
-                <h2 class="center"> - Titre de l'évenement 3 - </h2>
-                <br>
-
-                <div class="row">
-                    <div class="col droite">
-                        <p class="countPart"> 30/35</p>
-                    </div>
-                    <div class="col center">
-                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
-                    </div>
-                    <div class="col gauche">
-                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
-                    </div>
-                </div>
-            </div>
-            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
-        </div>
+        <br />
         
-        <div class="media evenement">
-            <div class="media-body">
-                <h2 class="center"> - Titre de l'évenement 4 - </h2>
-                <br>
-
-                <div class="row">
-                    <div class="col droite">
-                        <p class="countPart"> 30/35</p>
-                    </div>
-                    <div class="col center">
-                        <img class="ml-3 trash" src="images/stat.png" alt="Trash" height="70" width="70">
-                    </div>
-                    <div class="col gauche">
-                        <a href="listePart.html">  <img class="ml-3 trash" src="images/liste.png" alt="Trash" height="70" width="70"></a>
-                    </div>
-                </div>
-            </div>
-            <img class="ml-3 trash" src="images/trash.png" alt="Trash" height="35" width="35">
-        </div>
-
+        <p> {{erreur}} </p>
     </body>
 </html>

@@ -13,129 +13,144 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+        <script src="CtrlDetailEvt.js"></script>
         <link rel="stylesheet" href="style.css">
+        <base href="/">
     </head>
-    <header> 
+    <body class="gris" ng-app="Projet_Web" ng-controller="CtrlDetailEvt">
+    	<header> 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="accueilAdmin.html">Accueil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Evènements
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Liste des évènements</a>
-                            <a class="dropdown-item" href="#">Créer un évènement</a>
-                        </div>
-                    </li>
-
-                </ul>
-
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Administrateur
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">Gérer mon profil</a>
-                            <a class="dropdown-item" href="accueil.html">Se déconnecter</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-    </header>
-    <body class="gris">
-        <h1 class="titreBlanc"> Création d'un évènement</h1>
+        	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            	<a class="navbar-brand" href="accueilAdmin.html">Accueil</a>
+            	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            	    <span class="navbar-toggler-icon"></span>
+            	</button>
+	
+	            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	                <ul class="navbar-nav mr-auto">
+	                    <li class="nav-item dropdown">
+	                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            Evènements
+	                        </a>
+	                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                            <a class="dropdown-item" href="accueilAdmin.html">Liste des évènements</a>
+	                            <a class="dropdown-item" href="createEvt.html">Créer un évènement</a>
+	                        </div>
+	                    </li>
+	
+    	            </ul>
+	
+	                <ul class="navbar-nav">
+	                    <li class="nav-item dropdown">
+	                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            Administrateur
+	                        </a>
+	                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                            <a class="dropdown-item" href="">Gérer mon profil</a>
+	                            <a class="dropdown-item" href="accueil.html">Se déconnecter</a>
+	                        </div>
+	                    </li>
+	                </ul>
+	            </div>
+	        </nav>
+	
+	    </header>
+        <h1 class="titreBlanc"> Détail de l'évènement</h1>
         <div class="formulaire">
-            <form action="accueilAdmin.html" style="margin:2%;">
+            <form style="margin:2%;">
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Acronyme</label>
-                    <input type="text" class="form-control">
+                    <label for="acro">Acronyme</label>
+                    <input type="text" id="acro" name="acro" class="form-control" ng-model="evt.acroE" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Nom de l'évènement</label>
-                    <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Date de l'évènement</label>
-                    <input type="date" name="dateEvt">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Lieu de l'évènement</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Description</label>
-                    <textarea name="comment"> </textarea>
+                    <label for="nameEvt">Nom de l'évènement</label>
+                    <input type="text" class="form-control" name="nameEvt" id="nameEvt" ng-model="evt.nomE" readonly>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Date d'ouverture des inscriptions</label>
-                    <input type="date" name="ouverture">
+                    <label for="DateEvt">Date de l'évènement</label>
+                    <input type="text" name="DateEvt" id="DateEvt" ng-model="evt.dateEvt | date:'dd/MM/yyyy'" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="lieuEvt">Lieu de l'évènement</label>
+                    <input type="text" class="form-control" name="lieuEvt" id="lieuEvt" ng-model="evt.lieuE" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="DescEvt">Description</label>
+                    <textarea name="DescEvt" id="DescEvt" ng-model="evt.descE" readonly> </textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Date de clôture des inscriptions</label>
-                    <input type="date" name="cloture">
+                    <label for="DateOuv">Date d'ouverture des inscriptions</label>
+                    <input type="text" name="DateOuv" id="DateOuv" ng-model="evt.dateOE | date:'dd/MM/yyyy'" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="DateClo">Date de clôture des inscriptions</label>
+                    <input type="text" name="DateClo" id="DateClo" ng-model="evt.dateCE | date:'dd/MM/yyyy'" readonly>
                 </div>
                 <div class="form-group">
                     <label for="numeric">Nombre maximal de participants</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+                    <input type="number" name="nbMax" id="nbMax" ng-model="evt.nbMaxPartE" readonly>
                 </div>
 
                 <div>
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Etudiant</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
-
+                
+                	<div ng-if="evt.etuOk === 1">
+                  	  	<input type="checkbox" id="isEtu" 
+                    	       name="isEtu" checked="checked" onclick="return false">
+                    	<label for="isEtu">Etudiant</label>
+                    	<input type="number" name="nbAccEtu" id="nbAccEtu" ng-model="evt.nbAccEtu" readonly>
+					</div>
+					
+                    <br>
+                    
+					<div ng-if="evt.dipOk === 1">
+                    	<input type="checkbox" id="isDip" 
+                    	       name="isDip"  checked="checked" onclick="return false">
+                    	<label for="isDip">Diplômé</label>
+                    	<input type="number" name="nbAccDip" id="nbAccDip" ng-model="evt.nbAccDip" readonly>
+					</div>
+					
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Diplômé</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
-
+					<div ng-if="evt.proOk === 1">
+                    	<input type="checkbox" id="isPro" 
+                    	       name="isPro" checked="checked" onclick="return false">
+                    	<label for="isPro">Professionel</label>
+                    	<input type="number" name="nbAccPro" id="nbAccPro" ng-model="evt.nbAccPro" readonly>
+					</div>
+					
+                    <br>
+					
+					<div ng-if="evt.adminOk === 1">
+                    	<input type="checkbox" id="isAdmin"
+                        	   name="isAdmin" checked="checked" onclick="return false">
+                    	<label for="isAdmin">Administratif</label>
+                    	<input type="number" name="nbAccAdmin" id="nbAccAdmin" ng-model="evt.nbAccAdmin" readonly>
+					</div>
+					
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Professionel</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
-
+					<div ng-if="evt.ensOk === 1">
+                    	<input type="checkbox" id="isEns"
+                    	       name="isEns" checked="checked" onclick="return false">
+                    	<label for="isEns">Enseignant</label>
+                    	<input type="number" name="nbAccEns" id="nbAccEns" ng-model="evt.nbAccEns" readonly>
+					</div>
+					
                     <br>
 
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Administratif</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
-
-                    <br>
-
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Enseignant</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
-
-                    <br>
-
-                    <input type="checkbox" id="typeParticipant"
-                           name="contact">
-                    <label for="typeParticipant">Accompagnant</label>
-                    <input type="number" name="numeric" id="numeric" value="0">
+					<div ng-if="evt.accOk === 1">
+                    	<input type="checkbox" id="isAcc"
+                        	   name="isAcc" checked="checked" onclick="return false">
+                    	<label for="isAcc">Accompagnant</label>
+                    </div>
                 </div>
 
                 <div>
-                    <button type="submit" class="btn btn-secondary">Enregistrer</button>
+                    <a href="accueilAdmin.html">Retour</a>
                 </div>
 
             </form>

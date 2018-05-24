@@ -48,14 +48,45 @@ app.post('/participants', function (req, res) {
 });
 
 app.post('/evenements', function (req, res) {
-console.log(req.body);
-    con.query('INSERT INTO Evenements(acroE, nomE, lieuE, descE, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns) VALUES (\'' 
+    con.query('INSERT INTO Evenements(acroE, nomE, lieuE, descE, dateEvt, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns) VALUES (\'' 
     + req.body.acro + '\', \'' + req.body.nameEvt + '\', \'' + req.body.lieuEvt 
-    + '\', \'' + req.body.DescEvt + '\', \'' + req.body.DateOuv + '\', \'' + req.body.DateClo + '\', \'' + req.body.nbMax + '\', \'' + req.body.isEtu
+    + '\', \'' + req.body.DescEvt + '\', \'' + req.body.DateEvt + '\', \'' + req.body.DateOuv + '\', \'' + req.body.DateClo + '\', \'' + req.body.nbMax + '\', \'' + req.body.isEtu
     + '\', \'' + req.body.isDip + '\', \'' + req.body.isPro + '\', \'' + req.body.isAdmin + '\', \'' + req.body.isEns + '\', \'' + req.body.isAcc  + '\', \'' + req.body.nbEtu + '\', \'' + req.body.nbDip + '\', \'' + req.body.nbPro + '\', \'' + req.body.nbAdmin + '\', \'' + req.body.nbEns + '\');', 
         function (err, result) {
             if (err) throw err;
             res.send('Succes');
+        }
+    );
+});
+
+app.post('/getevenements', function (req, res) {
+    con.query('SELECT E.idE, acroE, nbMaxPartE, coalesce(COUNT(DISTINCT idP),0) as nbPart FROM Evenements E LEFT OUTER JOIN Participer P ON p.idE = E.idE GROUP BY E.idE, acroE, nomE, lieuE, descE, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns', function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.post('/deleteevenement', function (req, res) {
+    con.query('DELETE FROM Evenements WHERE idE = ' + req.body.idE + ';', function (err, result) {
+            if (err) throw err;
+            res.send('OK');
+        }
+    );
+});
+
+app.post('/getevenement', function (req, res) {
+    con.query('SELECT E.idE, acroE, nomE, lieuE, descE, dateEvt, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns FROM Evenements E WHERE E.idE = ' + req.body.id + ' ;', function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.post('/getnbevenements', function (req, res) {
+    con.query('SELECT COUNT(*) as nbEvents FROM Evenements', function (err, result) {
+            if (err) throw err;
+            res.send(result);
         }
     );
 });
