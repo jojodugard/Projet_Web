@@ -14,69 +14,71 @@ and open the template in the editor.
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+        <script src="CtrlListPart.js"></script>
+        <base href="/">
     </head>
 
-    <header> 
+	<body class="gris" ng-app="Projet_Web" ng-controller="CtrlListPart">
+    	<header> 
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="accueilAdmin.html">Accueil</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+            	<a class="navbar-brand" href="accueilAdmin.html">Accueil</a>
+            	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            	    <span class="navbar-toggler-icon"></span>
+            	</button>
+	
+	            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	                <ul class="navbar-nav mr-auto">
+    	                <li class="nav-item dropdown">
+        	                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            	                Evènements
+            	            </a>
+            	            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            	                <a class="dropdown-item" href="accueilAdmin.html">Liste des évènements</a>
+            	            </div>
+            	        </li>
+	
+	                    <li class="nav-item dropdown">
+	                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            Edition
+	                        </a>
+	                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                            <a class="dropdown-item" href="">Editer la liste des participants</a>
+	                            <a class="dropdown-item" href="badges.html">Editer les badges</a>
+	                        </div>
+	                    </li>
+	
+	                </ul>
+	
+	                <form class="form-inline my-2 my-lg-0">
+	                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+	                    <button class="btn btn-outline-secondary my-2 my-sm-0 search" type="submit">Recherche</button>
+	                </form>
+	
+	
+		                <ul class="navbar-nav">
+    	                <li class="nav-item dropdown">
+    	                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    	                        Administrateur
+    	                    </a>
+    	                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    	                        <a class="dropdown-item" href="">Gérer mon profil</a>
+    	                        <a class="dropdown-item" href="accueil.html">Se déconnecter</a>
+    	                    </div>
+    	                </li>
+    	            </ul>
+	
+	            </div>
+	        </nav>
+	
+	    </header>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Evènements
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="accueilAdmin.html">Liste des évènements</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Edition
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">Editer la liste des participants</a>
-                            <a class="dropdown-item" href="badges.html">Editer les badges</a>
-                        </div>
-                    </li>
-
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-                    <button class="btn btn-outline-secondary my-2 my-sm-0 search" type="submit">Recherche</button>
-                </form>
-
-
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Administrateur
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="">Gérer mon profil</a>
-                            <a class="dropdown-item" href="accueil.html">Se déconnecter</a>
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
-        </nav>
-
-    </header>
-    <body class="gris">
-
-        <h1 class='titreBlanc'> - AL3C 2019 - </h1>
+        <h1 class='titreBlanc'> - {{evt.acroE}} - </h1>
         <div class="largeur">
             <table class="table table-striped table-bordered table-hover participant">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prénom</th>
                         <th scope="col">Type</th>
@@ -84,40 +86,11 @@ and open the template in the editor.
                     </tr>
                 </thead>
                 <tbody>
-               <tr onclick="document.location='detailPart.html'">
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>Enseignant</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>Etudiant</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>Enseignant</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Madame</td>
-                        <td>Patate</td>
-                        <td>Etudiant</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Monsieur</td>
-                        <td>Bidule</td>
-                        <td>Enseignant</td>
-                        <td>4</td>
+               		<tr ng-repeat="part in participants" ng-click="document.location='detailPart.html?id={{part.idP}}'">
+                        <td scope="row">{{part.nomP}}</td>
+                        <td>{{part.prenomP}}</td>
+                        <td>{{part.typeP}}</td>
+                        <td>{{part.nbaccompP}}</td>
                     </tr>
                 </tbody>
             </table>

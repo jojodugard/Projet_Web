@@ -83,6 +83,22 @@ app.post('/getevenement', function (req, res) {
     );
 });
 
+app.post('/getparticipantsevenement', function (req, res) {
+    con.query('SELECT Pa.idP, Pa.nomP, Pa.prenomP, Pa.typeP, (SELECT COUNT(*) FROM Participants WHERE refP = Pa.idP) as nbaccompP FROM Participer P, Participants Pa  WHERE P.idE = ' + req.body.id + ' AND P.IDP=Pa.IDP ;', function (err, result) {
+			if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.post('/getnbevenements', function (req, res) {
+    con.query('SELECT COUNT(*) as nbEvents FROM Evenements', function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
 app.post('/getnbevenements', function (req, res) {
     con.query('SELECT COUNT(*) as nbEvents FROM Evenements', function (err, result) {
             if (err) throw err;
