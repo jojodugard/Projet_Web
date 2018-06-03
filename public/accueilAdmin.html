@@ -61,13 +61,10 @@ and open the template in the editor.
 
 
     </header>
-    
 
-        <div class="nbEvt">Nombre d'évènements: {{nbEvents}}</div>
-
+        <div class="nbEvt">Nombre d'évènements: {{nbEvents}} | Nombre moyen de participants à un évènement: {{moyPart}}</div>
+        
         <!-- Création d'une div pour chacun des évènements -->
-
-        <!-- Pour l'instant elles sont crées à la main pour la maquette -->
 		<div ng-repeat="evt in events">
         	<div class="media evenement">
         		<a href="detailEvt.html?id={{evt.idE}}"> Détails </a>

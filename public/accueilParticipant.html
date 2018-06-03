@@ -13,9 +13,11 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+		<script src="CtrlPart.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body class="gris">
+    <body class="gris" ng-app="Projet_Web" ng-controller="CtrlPart" >
         <header> 
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,36 +60,32 @@ and open the template in the editor.
         </header>
         <h1 class='titreBlanc'>Liste des évènements à venir</h1>
 
-        <div style="margin-left:10%;">Nombre d'évènements: 4</div>
+        <div style="margin-left:10%">Nombre d'évènements: {{nbEvents}}</div>
 
         <!-- Création d'une div pour chacun des évènements -->
-
-        <!-- Pour l'instant elles sont crées à la main pour la maquette -->
-
-        <div class="evenement">
-            <h2 class="center">Titre de l'évenement 1</h2>
-
-            <p> Nombre de participants: XX</p>
-            <p> Date de clôture des inscriptions</p>
-            <a href="inscriptionEvt.html"> S'inscrire </a>
+        <div ng-repeat="evt in events" class="evenement">
+        	    <div class="media-body">
+        	        <h2 class="center"> - {{evt.acroE}} - </h2>
+        	        <br>
+	
+	                <div class="row">
+	                    <div class="col droite" style="margin-left : -20%">
+	                        <p class="forPart"> {{evt.nbPart}}/{{evt.nbMaxPartE}}</p>
+    	                </div>
+    	                <div class="col center">
+             	   			<a href="inscriptionEvt.html?id={{evt.idE}}" style="font-size:20px;"> S'inscrire </a>
+             	   		</div>
+    	                <div class="col gauche" flex>
+							<p class="forPart"> Date de clôture : {{evt.dateCE}}</p>            	        
+						</div>
+             	   </div>
+            	</div>
+        	<br />
         </div>
-
-        <div class="evenement">
-            <h2 class="center">Titre de l'évenement 1</h2>
-
-            <p> Nombre de participants: XX</p>
-            <p> Date de clôture des inscriptions</p>
-            <a href="inscriptionEvt.html"> S'inscrire </a>
-        </div>
-
-        <div class="evenement">
-            <h2 class="center">Titre de l'évenement 1</h2>
-
-            <p> Nombre de participants: XX</p>
-            <p> Date de clôture des inscriptions</p>
-            <a href="inscriptionEvt.html"> S'inscrire </a>
-        </div>
-
-
+        
+        <br />
+        
+        <p> {{erreur}} </p>
+        
     </body>
 </html>

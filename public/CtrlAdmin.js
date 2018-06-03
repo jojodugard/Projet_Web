@@ -31,8 +31,18 @@ angular.module('Projet_Web', [])
 					});
                 };
 
+                $scope.getNbParts = function() {
+					return $http.post('/getnbparticipantstot', undefined, undefined).then(function(response) {
+						$scope.data = response.data;
+						$scope.nbPartTot = $scope.data[0]["nbPartTot"];
+						$scope.moyPart = $scope.nbPartTot / $scope.nbEvents ;
+					});
+                };
+                
+
 				$scope.getEvents();
                 $scope.getNBEvents();
+                $scope.getNbParts();
                 
             }]);
 

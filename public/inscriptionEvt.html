@@ -6,15 +6,21 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Accueil</title>
+        <title>Application d'inscription</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js" crossorigin="anonymous"></script>
+        <script src="CtrlInscr.js"></script>
         <link rel="stylesheet" href="style.css">
+        <base href="/">
     </head>
+    
+    <body class="gris" ng-app="Projet_Web" ng-controller="CtrlInscr">
+    
     <header> 
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,50 +58,58 @@ and open the template in the editor.
         </nav>
 
     </header>
-    <body class="gris">
-        <div> <h1 class="titreBlanc"> Inscription à l'évènement XXX </h1> </div>
+    
+        <div> <h1 class="titreBlanc"> Inscription à l'évènement {{evt.acroE}} </h1> </div>
 
         <div class="formulaire">
             <form style="margin:2%;">
 
                 <div class="form-group">
                     <label for="">Nom</label>
-                    <input type="text" name="" id="" class="form-control" ng-model="">
+                    <input type="text" name="nom" id="nom" class="form-control" ng-model="toInscr.nom">
                 </div>
 
                 <div class="form-group">
                     <label for="">Prénom</label>
-                    <input type="text" name="" id="" class="form-control" ng-model="">
+                    <input type="text" name="prenom" id="prenom" class="form-control" ng-model="toInscr.prenom">
                 </div>
 
                 <div class="form-group">
                     <label for="">Mail</label>
-                    <input type="text" name="" id="" class="form-control" ng-model="">
+                    <input type="text" name="mail" id="mail" class="form-control" ng-model="toInscr.mail">
                 </div>
 
                 <div class="form-group">
                     <label for="">Téléphone</label>
-                    <input type="text" name="" id="" class="form-control" ng-model="">
+                    <input type="text" name="tel" id="tel" class="form-control" ng-model="toInscr.tel">
                 </div>
 
                 <div class="form-group">
                     <label for="">Statut</label>
-                    <select class="form-control" id="">
-                        <option>Etudiant</option>
-                        <option>Diplômé</option>
-                        <option>Professionnel</option>
-                        <option>Administratif</option>
-                        <option>Enseignant</option>
+                    <select class="form-control" id="statut" ng-model="toInscr.statut" ng-change="showAccBy()" >
+                        <option value="Etudiant">Etudiant</option>
+                        <option value="Diplome">Diplômé</option>
+                        <option value="Professionnel">Professionnel</option>
+                        <option value="Administratif">Administratif</option>
+                        <option value="Enseignant">Enseignant</option>
+                        <option value="Accompagnant">Accompagnant</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" ng-if="showAccBy()">
+                	<label for="">Accompagné par</label>
+                    <select class="form-control" id="accby" ng-model="toInscr.ref">
+                    	<option ng-repeat="acc in accompagnateurs" value="{{acc.idP}}" ng-selected="accby == acc.idP">{{acc.prenomP}} {{acc.nomP}}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Accompagnants</label>
-                    <input type="number" name="" id="" value="0" ng-model="">
+                    <label for="">Mot de passe (facultatif)</label>
+                    <input type="text" name="mdp" id="mdp" ng-model="toInscr.mdp">
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-secondary" ng-click="" >S'inscrire</button>
+                    <button type="button" class="btn btn-secondary" ng-click="doInscription()" >S'inscrire (cliquez deux fois)</button>
                 </div>
                 
             </form>

@@ -108,6 +108,11 @@ label{
     color: black;
 }
 
+.forPart{
+	font-size:20px;
+	color: black;
+}
+
 
 .participant{
     background-color: #f8f9fa;

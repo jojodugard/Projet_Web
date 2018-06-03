@@ -67,6 +67,23 @@ app.post('/getevenements', function (req, res) {
     );
 });
 
+app.post('/getaccompagnateurs', function (req, res) {
+    con.query('SELECT P.prenomP, P.nomP, P.idP FROM Participer Pa, Participants P WHERE Pa.idP = P.idP AND P.typeP != \'Accompagnant\' AND Pa.idE =' + req.body.id + ';', function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.post('/getevenementspourpart', function (req, res) {
+    con.query('SELECT E.idE, acroE, nbMaxPartE, DATE_FORMAT(dateOE, \'%d/%m/%Y à %Hh:%imin:%ss\') as dateOE, DATE_FORMAT(dateCE, \'%d/%m/%Y à %Hh:%imin:%ss\') as dateCE , coalesce(COUNT(DISTINCT idP),0) as nbPart FROM Evenements E LEFT OUTER JOIN Participer P ON p.idE = E.idE WHERE now() BETWEEN E.dateOE AND E.dateCE GROUP BY E.idE, acroE, nomE, lieuE, descE, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns', function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+
 app.post('/deleteevenement', function (req, res) {
     con.query('DELETE FROM Evenements WHERE idE = ' + req.body.idE + ';', function (err, result) {
             if (err) throw err;
@@ -74,6 +91,57 @@ app.post('/deleteevenement', function (req, res) {
         }
     );
 });
+
+app.post('/participantexist', function (req, res) {
+    con.query('SELECT COUNT(*) as nb FROM Participants WHERE prenomP = \'' + req.body.prenom + '\' AND nomP = \'' + req.body.nom + '\' ;', function (err, result) {
+            if (err) throw err;
+			res.send(result);
+    });
+});    
+   
+ 
+app.post('/ajouterParticipant', function (req, res) {
+		if (req.body.mdp == "" && req.body.ref == "") {
+			var sql = 'INSERT INTO Participants(nomP, prenomP, mailP, telP, typeP) VALUES (\'' + req.body.nom + '\', \'' + req.body.prenom + '\', \'' + req.body.mail 
+    		+ '\', \'' + req.body.tel + '\', \'' + req.body.statut + '\');';
+		}
+		else if (req.body.mdp == "") {
+			var sql = 'INSERT INTO Participants(nomP, prenomP, mailP, telP, typeP, refP) VALUES (\'' + req.body.nom + '\', \'' + req.body.prenom + '\', \'' + req.body.mail 
+    		+ '\', \'' + req.body.tel + '\', \'' + req.body.statut + '\', \'' + req.body.ref + '\');';
+		}
+		else if (req.body.ref == "") {
+			var sql = 'INSERT INTO Participants(nomP, prenomP, mailP, telP, typeP, refP) VALUES (\'' + req.body.nom + '\', \'' + req.body.prenom + '\', \'' + req.body.mail 
+    		+ '\', \'' + req.body.tel + '\', \'' + req.body.statut + '\', \'' + req.body.ref + '\');';
+		}
+		else {
+    		var sql = 'INSERT INTO Participants(nomP, prenomP, mailP, telP, typeP, mdpP, refP) VALUES (\'' + req.body.nom + '\', \'' + req.body.prenom + '\', \'' + req.body.mail 
+    		+ '\', \'' + req.body.tel + '\', \'' + req.body.statut + '\', \'' + req.body.mdp + '\', \'' + req.body.ref + '\');';
+    	}
+    	console.log(sql);
+    	con.query(sql, function (err, result) {
+    		if (err) throw err;
+    		console.log(result);
+    	});
+});
+    
+app.post('/selectP', function (req, res) {
+    con.query('SELECT idP FROM Participants WHERE prenomP = \'' + req.body.prenom + '\' AND nomP = \'' + req.body.nom + '\' ;', function (err, resultat) {
+        if (err) throw err;
+        console.log(resultat);
+        res.send(resultat);
+    });	
+});
+
+app.post('/inscrire', function (req, res) {
+	var sql = 'INSERT INTO Participer(idE, idP) VALUES (' + req.body.idE + ', ' + req.body.idP +  ');'
+	console.log(sql);
+    con.query(sql, function (err, result) {
+            if (err) throw err;
+			res.send('Participation créée avec succès !');
+        }
+    );
+});
+
 
 app.post('/getevenement', function (req, res) {
     con.query('SELECT E.idE, acroE, nomE, lieuE, descE, dateEvt, dateOE, dateCE, nbMaxPartE, etuOk, dipOk, proOk, adminOk, ensOk, accOk, nbAccEtu, nbAccDip, nbAccPro, nbAccAdmin, nbAccEns FROM Evenements E WHERE E.idE = ' + req.body.id + ' ;', function (err, result) {
@@ -93,6 +161,14 @@ app.post('/getparticipantsevenement', function (req, res) {
 
 app.post('/getnbevenements', function (req, res) {
     con.query('SELECT COUNT(*) as nbEvents FROM Evenements', function (err, result) {
+            if (err) throw err;
+            res.send(result);
+        }
+    );
+});
+
+app.post('/getnbparticipantstot', function (req, res) {
+    con.query('SELECT COUNT(*) as nbPartTot FROM Participer', function (err, result) {
             if (err) throw err;
             res.send(result);
         }
